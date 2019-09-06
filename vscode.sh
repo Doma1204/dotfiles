@@ -1,0 +1,15 @@
+code --install-extension 2gua.rainbow-brackets
+code --install-extension aaron-bond.better-comments
+code --install-extension austin.code-gnu-global
+code --install-extension GrapeCity.gc-excelviewer
+code --install-extension Gruntfuggly.align-mode
+code --install-extension Gruntfuggly.todo-tree
+code --install-extension HookyQR.beautify
+code --install-extension ms-python.python
+code --install-extension ms-vscode.cpptools
+code --install-extension ms-vsliveshare.vsliveshare
+code --install-extension oderwat.indent-rainbow
+code --install-extension ritwickdey.LiveServer
+code --install-extension TzachOvadia.todo-list
+code --install-extension vsciot-vscode.vscode-arduino
+code --install-extension vscodevim.vim
