@@ -114,11 +114,15 @@ source $ZSH/oh-my-zsh.sh
 # own stuff
 
 #alias definition
-alias sozsh='source ~/.zshrc'
+alias szsh='source ~/.zshrc'
 
-alias robo='cd ~/Programing/Robotics_Related/robocon-2019'
+# directory alias
 alias home='cd ~'
 alias volume='cd /Volumes'
+alias robo='cd ~/Programing/Robotics_Related/robocon-2019'
+alias dot='cd ~/Programing/dotfiles'
+alias note='cd ~/Desktop/Notes'
+alias texnote='cd ~/Desktop/Notes/Tex\ Note'
 alias o='open .'
 
 alias m='make'
@@ -137,13 +141,44 @@ alias clearvs='find . -name .vscode -type d -print -exec rm -r {} +'
 alias cleards='find . -name .DS_Store  -print -exec rm -r {} +'
 
 alias go='git open'
+alias lg=lazygit
 
 # virtual python environment alias
 alias vpy='source ./bin/activate'
 alias exitv='deactivate'
 alias py=python3
+alias jn='jupyter notebook'
+alias jl='jupyter lab'
 
+# ls related stuff
 function chpwd() {
     emulate -L zsh
     ls
 }
+
+alias toggleBlue='blueutil -p toggle'
+
+# qmk related function and aliases
+alias qm='qmk compile -kb gh60/doma -km joseph'
+
+function qmkenv() {
+	open -a "QMK Toolbox"
+	cd ~/Programing/qmk_firmware/keyboards/gh60/doma/keymaps/joseph
+	code -n ./keymap.c
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

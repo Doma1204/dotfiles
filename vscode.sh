@@ -13,3 +13,8 @@ code --install-extension ritwickdey.LiveServer
 code --install-extension TzachOvadia.todo-list
 code --install-extension vsciot-vscode.vscode-arduino
 code --install-extension vscodevim.vim
+code --install-extension equinusocio.vsc-material-theme
+code --install-extension pkief.material-icon-theme
+code --install-extension eamodio.gitlens
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension msjsdiag.debugger-for-chrome

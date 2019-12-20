@@ -36,7 +36,7 @@ fi
 
 # Install Brew Package
 brewInstall python
-brewInstall tree
+brewInstall tree # print the tree structure of current directory
 brewInstall geckodriver
 brewInstall ghostscript
 brewInstall youtube-dl # download youtube videos
@@ -44,6 +44,12 @@ brewInstall you-get # download online videos
 brewInstall ffmpeg
 brewInstall htop # terminal activity monitor
 brewInstall mas # mac app store terminal manager
+brewInstall tldr # Too long, don't read: simplify version of 'man' command
+tldr --update # update tldr
+brewInstall neovim # Neovim
+brewInstall nushell # a shell with good ls command
+brewInstall blueutil # command line bluetooth utility
+brewInstall lazygit # terminal UI for git
 
 # Check if cask is installed adn install if not
 if brew cask &> /dev/null; then
@@ -63,7 +69,11 @@ caskInstall mactex # mac LaTex package
 caskInstall iina # open source video viewer
 caskInstall skim # PDF viewer and editor
 caskInstall sourcetree # GitHub manager
-caskInstall bartender
+caskInstall bartender # hide menu bar item
+caskInstall keycastr # show keystroke pressed
+# caskInstall anaconda # virtual python environment manager
+caskInstall kite # python autocomplete engine
+caskInstall station # all business app in one
 
 # upgrade brew
 brew upgrade
