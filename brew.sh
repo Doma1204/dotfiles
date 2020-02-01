@@ -50,6 +50,8 @@ brewInstall neovim # Neovim
 brewInstall nushell # a shell with good ls command
 brewInstall blueutil # command line bluetooth utility
 brewInstall lazygit # terminal UI for git
+brewInstall vifm # terminal vi file manager
+brewInstall zsh-syntax-highlighting # zsh shell sytax highlighting plug-in
 
 # Check if cask is installed adn install if not
 if brew cask &> /dev/null; then
@@ -73,7 +75,7 @@ caskInstall bartender # hide menu bar item
 caskInstall keycastr # show keystroke pressed
 # caskInstall anaconda # virtual python environment manager
 caskInstall kite # python autocomplete engine
-caskInstall station # all business app in one
+# caskInstall station # all business app in one
 
 # upgrade brew
 brew upgrade

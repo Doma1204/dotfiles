@@ -1,9 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$PATH
 export PATH=~/.npm-global/bin:$PATH
-export PATH=$PATH:~/.personal_extension/gcc-arm-none-eabi-7-2018-q2-update/bin
-# export PATH=$PATH:~/.personal_extension/openocd/0.10.0-10-20181020-0522/bin
-export PATH=$PATH:~/.personal_extension/code-server-1.32.0-310-darwin-x64
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/lammanhei/.oh-my-zsh"
@@ -16,7 +13,7 @@ export ZSH="/Users/lammanhei/.oh-my-zsh"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_STRATEGY=truncate_folders
@@ -76,10 +73,15 @@ POWERLEVEL9K_SHORTEN_STRATEGY=truncate_folders
 plugins=(
 	# git
 	# zsh-autosuggestions
+	# vi-mode
 	git-open
 )
 
+EDITOR=vim
+export EDITOR
+
 source $ZSH/oh-my-zsh.sh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 
@@ -117,12 +119,9 @@ source $ZSH/oh-my-zsh.sh
 alias szsh='source ~/.zshrc'
 
 # directory alias
+source ./directory_alias.sh
 alias home='cd ~'
 alias volume='cd /Volumes'
-alias robo='cd ~/Programing/Robotics_Related/robocon-2019'
-alias dot='cd ~/Programing/dotfiles'
-alias note='cd ~/Desktop/Notes'
-alias texnote='cd ~/Desktop/Notes/Tex\ Note'
 alias o='open .'
 
 alias m='make'
@@ -131,6 +130,7 @@ alias code='code .'
 
 alias path='echo $PATH | tr -s ":" "\n"'
 
+alias sls='ls -lah'
 alias listporttty='ls /dev/tty.*'
 alias listportcu='ls /dev/cu.*'
 function listport() {
@@ -144,11 +144,13 @@ alias go='git open'
 alias lg=lazygit
 
 # virtual python environment alias
-alias vpy='source ./bin/activate'
+alias create_venv='python3 -m venv .'
+alias vpy='source ./bin/activate && which python3'
 alias exitv='deactivate'
 alias py=python3
 alias jn='jupyter notebook'
 alias jl='jupyter lab'
+alias hc='python3 -m hc05config' # HC-05 Bluetooth Configuration Tool
 
 # ls related stuff
 function chpwd() {
@@ -166,19 +168,3 @@ function qmkenv() {
 	cd ~/Programing/qmk_firmware/keyboards/gh60/doma/keymaps/joseph
 	code -n ./keymap.c
 }
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
