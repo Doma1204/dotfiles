@@ -1,6 +1,19 @@
+# Check if Homebrew is installed and install if not
+if test ! $(which brew); then
+	echo "Installing Homebrew"
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+	echo "Homebrew is installed"
+fi
+
+# get all the name of installed brew packages and brew cask packages
+echo "Getting Packages List"
+packages="$(brew list)"
+cask_packages="$(brew cask list)"
+
 brewInstall() {
-	# if brew ls --versions $1 > /dev/null; then
-	if brew ls --versions $1 &> /dev/null; then
+	if [[ $packages =~ $1 ]]
+	then
 		echo "$1 is installed"
 		return 1
 	else
@@ -10,20 +23,15 @@ brewInstall() {
 }
 
 caskInstall() {
-	if brew cask ls --versions $1 &> /dev/null; then
+	if [[ $cask_packages =~ $1 ]]
+	then
 		echo "$1 is installed"
+		return 1
 	else
 		brew cask install $1
+		return 0
 	fi
 }
-
-# Check if Homebrew is installed and install if not
-if test ! $(which brew); then
-	echo "Installing Homebrew"
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-else
-	echo "Homebrew is installed"
-fi
 
 # Install zsh and set as default shell
 if brewInstall zsh; then
@@ -52,6 +60,7 @@ brewInstall blueutil # command line bluetooth utility
 brewInstall lazygit # terminal UI for git
 brewInstall vifm # terminal vi file manager
 brewInstall zsh-syntax-highlighting # zsh shell sytax highlighting plug-in
+brewInstall broot # a terminal tool to see and navigate directory tree
 
 # Check if cask is installed adn install if not
 if brew cask &> /dev/null; then
@@ -76,10 +85,15 @@ caskInstall keycastr # show keystroke pressed
 # caskInstall anaconda # virtual python environment manager
 caskInstall kite # python autocomplete engine
 # caskInstall station # all business app in one
+caskInstall motrix # Powerful download manager
+caskInstall lepton # Open Source Snippest Manager
+caskInstall qlvideo # Thumbnail display for most type of video
+caskInstall monitorcontrol # Control external monitor brightness and volume
+caskInstall background-music # Control volume of different apps
 
 # upgrade brew
 brew upgrade
 brew cask upgrade
 
-# # clean up brew
+# clean up brew
 brew cleanup

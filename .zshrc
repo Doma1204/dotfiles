@@ -119,7 +119,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias szsh='source ~/.zshrc'
 
 # directory alias
-source ./directory_alias.sh
+source ~/.directory_alias
 alias home='cd ~'
 alias volume='cd /Volumes'
 alias o='open .'
@@ -151,6 +151,8 @@ alias py=python3
 alias jn='jupyter notebook'
 alias jl='jupyter lab'
 alias hc='python3 -m hc05config' # HC-05 Bluetooth Configuration Tool
+alias wp='which python'
+alias wp3='which python3'
 
 # ls related stuff
 function chpwd() {
@@ -160,6 +162,10 @@ function chpwd() {
 
 alias toggleBlue='blueutil -p toggle'
 
+function hssh() {
+	ssh $1@192.168.1.$2
+}
+
 # qmk related function and aliases
 alias qm='qmk compile -kb gh60/doma -km joseph'
 
@@ -167,4 +173,27 @@ function qmkenv() {
 	open -a "QMK Toolbox"
 	cd ~/Programing/qmk_firmware/keyboards/gh60/doma/keymaps/joseph
 	code -n ./keymap.c
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+function conv(){
+	for i in *.mov;
+		do name=`echo "$i" | cut -d'.' -f1`
+		echo "$name"
+		ffmpeg -i "$i" -q:a 0 -map a "${name}.mp3"
+	done
 }
